@@ -1,0 +1,90 @@
+/* Temp colors */
+/* Cream/white => #EAE7DC */
+
+/* Beige => #D8C3A5 */
+
+/* Dark Grey => #8E8D8A */
+
+/* Pink/red => #E98074 */
+
+/* Red => #E85A4F */
+
+
+/* Remove default */
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #EAE7DC;
+    color: #E98074;
+}
+
+/* Page wrapper to create the page structure */
+#wrapper {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    height: 100vh;
+    text-align: center;
+    font-size: 20px;
+}
+
+#main {
+    position: relative;
+    border-bottom: 2px solid #D8C3A5;
+}
+
+#wrapper h2 {
+    padding-bottom: 0.75em;
+}
+
+#main h2 {
+    border-bottom: 2px solid #D8C3A5;
+}
+
+#sidebar {
+    position: relative;
+    border-right: 2px solid #D8C3A5;
+}
+
+#sidebar h2 {
+    border-bottom: 2px solid #D8C3A5;
+}
+
+/* Style add project button */
+#addProject {
+    position: relative;
+    padding: 8px 16px;
+    top: 15px;
+    color: #fff;
+    background-color: #D8C3A5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addProject:hover {
+    background-color: #E98074;
+}
+
+/* Delay + animate on hover */
+#addProject:hover,
+#addTodo:hover {
+    transition: background-color 0.1s ease-in;
+}
+
+/* Style add todo button */
+#addTodo {
+    position: absolute;
+    top: 5em;
+    left: 2em;
+    font-size: 1.2em;
+    color: #fff;
+    padding: 4px 11px;
+    background-color: #D8C3A5;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#addTodo:hover {
+    background-color: #E98074;
+}
