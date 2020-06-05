@@ -135,6 +135,13 @@ body {
     padding: 1em;
 }
 
+#projectWarning {
+    color: #E85A4F;
+    font-style: italic;
+    margin-left: 1em;
+    display: none;
+}
+
 .modal-content input[type=submit] {
     font-size: 1em;
     width: 100%;
