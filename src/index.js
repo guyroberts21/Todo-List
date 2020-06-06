@@ -8,8 +8,8 @@ import { clickOutside } from './modal';
 const addTodo = document.getElementById('addTodo');
 addTodo.addEventListener('click', createTodo);
 
-const submitProject = document.getElementById('submitProject');
-submitProject.addEventListener('click', createProject);
+// Add event listener to create project
+document.customForm.addEventListener('submit', createProject);
 
 // Modal buttons
 const projectBtn = document.getElementById('addProject');
