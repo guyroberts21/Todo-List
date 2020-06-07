@@ -16,7 +16,7 @@
         <div id="main">
             <h2>Project1</h2>
             <button type="button" id="addTodo">+</button>
-            <ul id="todos"></ul>
+            <div id="todos"></div>
         </div>
     </div>
 
@@ -24,16 +24,40 @@
         <div class="modal-content">
             <span class="project-close-btn">&times;</span>
             
-            <!-- Modal form -->
-            <form name="customForm" id="custom">
+            <!-- Project Modal form -->
+            <form name="projectForm">
                 <label for="projectTitle">Title</label>
-                <span id="projectWarning">Enter a valid title</span>
-                <input type="text" id="projectTitle" name="projecttitle" placeholder="Project 1">
+                <input type="text" id="projectTitle" name="projecttitle" placeholder="Project 1" required>
 
                 <label for="projectDescription">Description (optional)</label>
                 <input type="text" id="projectDescription" name="projectdescription" placeholder="My first project">
 
                 <input type="submit" id="submitProject" value="Create">
+            </form>
+        </div>
+    </div>
+
+    <div id="todoModal" class="modal">
+        <div class="modal-content">
+            <span class="todo-close-btn">&times;</span>
+            
+            <!-- Todo Modal form -->
+            <form name="todoForm">
+                <label for="todoTitle">Title</label>
+                <input type="text" id="todoTitle" name="todotitle" placeholder="Title" required>
+
+                <label for="todoDescription">Description (optional)</label>
+                <input type="text" id="todoDescription" name="tododescription" placeholder="Description">
+
+                <label for="todoDate">Due Date</label>
+                <input type="date" id="todoDate" name="tododate">
+
+                <label for="todoPriority">Priority</label>
+                <div class="priorityLevel" id="priority1"></div>
+                <div class="priorityLevel" id="priority2"></div>
+                <div class="priorityLevel" id="priority3"></div>
+
+                <input type="submit" id="submitTodo" value="Create">
             </form>
         </div>
     </div>

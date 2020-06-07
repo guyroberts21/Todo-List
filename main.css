@@ -122,7 +122,8 @@ body {
     margin-top: 0.5em;
 }
 
-.modal-content input[type=text] {
+.modal-content input[type=text],
+.model-content input[type=date] {
     box-sizing: border-box;
     width: 100%;
     padding: 0.6em 1em;
@@ -156,7 +157,8 @@ body {
     cursor: pointer;
 }
 
-.project-close-btn {
+.project-close-btn,
+.todo-close-btn {
     color: #E98074;
     float: right;
     font-size: 1.5em;
@@ -164,7 +166,9 @@ body {
 }
 
 .project-close-btn:hover,
-.project-close-btn:focus {
+.project-close-btn:focus,
+.todo-close-btn:hover,
+.todo-close-btn:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
