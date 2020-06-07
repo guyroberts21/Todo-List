@@ -53,9 +53,11 @@
                 <input type="date" id="todoDate" name="tododate">
 
                 <label for="todoPriority">Priority</label>
-                <div class="priorityLevel" id="priority1"></div>
-                <div class="priorityLevel" id="priority2"></div>
-                <div class="priorityLevel" id="priority3"></div>
+                <select name="priorities" id="priorities">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
 
                 <input type="submit" id="submitTodo" value="Create">
             </form>
