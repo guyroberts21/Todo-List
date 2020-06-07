@@ -122,8 +122,14 @@ body {
     margin-top: 0.5em;
 }
 
-.modal-content input[type=text],
-.model-content input[type=date] {
+.modal-content select {
+    padding: 0.5em;
+    margin-left: 1em;
+    border-radius: 4px;
+    font-size: 0.75em;
+}
+
+.modal-content input[type=text] {
     box-sizing: border-box;
     width: 100%;
     padding: 0.6em 1em;
@@ -132,6 +138,43 @@ body {
     display: inline-block;
     border: 1px solid #8E8D8A;
     border-radius: 4px;
+}
+
+.modal-content input[type=date] {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 1em 0.5em;
+    padding: 0.3em;
+}
+
+/* Priorities */
+.priorities {
+    display: flex;
+    margin: 0.5em;
+}
+
+.priority-level {
+    width: 30px;
+    height: 30px;
+    transform: scale(0.9);
+    transition: transform 0.1s ease-in;
+    margin-right: 0.5em;
+}
+
+.priority-level:hover {
+    transform: scale(1);
+}
+
+#priority1 {
+    background-color: yellow;
+}
+
+#priority2 {
+    background-color: orange;
+}
+
+#priority3 {
+    background-color: red;
 }
 
 #projectDescription {

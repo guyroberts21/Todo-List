@@ -31,3 +31,11 @@ document.projectForm.addEventListener('submit', createProject);
 
 // Add event listener to create todo
 document.todoForm.addEventListener('submit', createTodo);
+
+// Make the date input display today's date as default
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+document.getElementById('todoDate').value = new Date().toDateInputValue();

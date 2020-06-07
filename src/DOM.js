@@ -42,6 +42,7 @@ export function createTodoContent() {
     const todoTitle = document.getElementById('todoTitle');
     const todoDescription = document.getElementById('todoDescription');
     const todoDate = document.getElementById('todoDate');
+    const todoPriority = document.getElementById('priorities')
 
     // Format the date using date-fns module
     const date = todoDate.value.split('-');
@@ -51,7 +52,7 @@ export function createTodoContent() {
     const formattedDate = format(new Date(year, month, day), 'do MMM');
 
     // create the todo (using info from modal)
-    let todo = newTodo(todoTitle.value, todoDescription.value, formattedDate, 1, false);
+    let todo = newTodo(todoTitle.value, todoDescription.value, formattedDate, todoPriority.value, false);
 
     // main container
     let todoContainer = document.createElement('div');
@@ -60,6 +61,7 @@ export function createTodoContent() {
     // priority
     const priority = document.createElement('div');
     priority.classList.add('todo-priority-mini');
+    priority.textContent = todo.priority;
     todoContainer.appendChild(priority);
 
     // todo title
