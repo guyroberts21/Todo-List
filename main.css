@@ -275,6 +275,12 @@ body {
     margin-top: 1.5em;
 }
 
+.todo-completed .todo-title,
+.todo-completed .todo-date {
+    text-decoration: line-through;
+    opacity: 0.75;
+}
+
 .todo-item {
     width: 80%;
     margin: 1.5em auto;
