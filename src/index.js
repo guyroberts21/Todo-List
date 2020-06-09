@@ -21,7 +21,13 @@ const addTodoBtn = document.getElementById('addTodo');
 const todoClose = document.querySelector('.todo-close-btn');
 
 // Todo Modal
-addTodoBtn.addEventListener('click', () => openModal(todoModal));
+addTodoBtn.addEventListener('click', () => {
+    // reset the date to the current date value
+    document.getElementById('todoDate').value = new Date().toDateInputValue();
+    
+    openModal(todoModal);
+});
+    
 todoClose.addEventListener('click', () => closeModal(todoModal));
 // Listen for outside click (in window)
 window.addEventListener('click', e => clickOutside(e, todoModal));
@@ -38,7 +44,6 @@ Date.prototype.toDateInputValue = (function() {
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
     return local.toJSON().slice(0,10);
 });
-document.getElementById('todoDate').value = new Date().toDateInputValue();
 
 // Function to format date properly
 function formatDate(date) {

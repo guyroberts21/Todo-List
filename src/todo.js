@@ -1,6 +1,6 @@
 import { todoTitle, todoDescription, todoDate, todoPriority, populateTodos } from './DOM';
 import { closeModal } from './modal';
-import { projects, todoModal, populatePage } from './index';
+import { projects, todoModal } from './index';
 import { format } from 'date-fns';
 
 // export single-line factory function for creating each todo list item
@@ -30,7 +30,8 @@ export function createTodo(e) {
         }
     };
 
-    populatePage(projects);
+    // Update local storage
+    localStorage.setItem('projects', JSON.stringify(projects))
 
     // close on success
     closeModal(todoModal);

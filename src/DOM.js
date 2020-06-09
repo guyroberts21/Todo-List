@@ -43,7 +43,18 @@ export function createTodoContent(todo) {
     // priority
     const priority = document.createElement('div');
     priority.classList.add('todo-priority-mini');
-    priority.textContent = todo.priority;
+    // priority.textContent = todo.priority;
+    switch (todo.priority.toLowerCase()) {
+        case 'low':
+            priority.style.opacity = 0.3;
+            break;
+        case 'medium':
+            priority.style.opacity = 0.7;
+            break;
+        case 'high':
+            priority.style.opacity = 1;
+            break;
+    }
     todoContainer.appendChild(priority);
 
     // todo title
@@ -59,9 +70,15 @@ export function createTodoContent(todo) {
     todoContainer.appendChild(todoDateDisplay);
 
     // mark as completed
-    const todoComplete = document.createElement('input');
-    todoComplete.type = 'checkbox';
-    todoContainer.appendChild(todoComplete);
+    const todoCompleteLabel = document.createElement('label');
+    todoCompleteLabel.classList.add('checkbox-label');
+    const todoCompleteInput = document.createElement('input');
+    todoCompleteInput.type = 'checkbox';
+    const todoCompleteCheckbox = document.createElement('span');
+    todoCompleteCheckbox.classList.add('checkbox-custom');
+    todoCompleteLabel.appendChild(todoCompleteInput);
+    todoCompleteLabel.appendChild(todoCompleteCheckbox);
+    todoContainer.appendChild(todoCompleteLabel);
 
     // return final element
     return todoContainer;
