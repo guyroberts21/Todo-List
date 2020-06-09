@@ -4,6 +4,11 @@ import { openModal, closeModal, clickOutside } from './modal';
 import { createProjectContent, populateTodos } from './DOM';
 import { format } from 'date-fns';
 
+// trial
+import { toggleComplete } from './todo-methods';
+const todos = document.querySelector('#todos');
+todos.addEventListener('click', toggleComplete);
+
 // Project Modal buttons
 export const projectModal = document.getElementById('projectModal');
 const projectBtn = document.getElementById('addProject');
