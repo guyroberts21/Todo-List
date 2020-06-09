@@ -51,6 +51,14 @@ body {
     border-bottom: 2px solid #D8C3A5;
 }
 
+/* Project info */
+#projectInfo {
+    text-align: left;
+    font-size: 0.8em;
+    font-style: italic;
+    color: #8E8D8A;
+}
+
 /* Style add project button */
 #addProject {
     position: relative;
@@ -76,7 +84,7 @@ body {
 /* Style add todo button */
 #addTodo {
     position: absolute;
-    top: 5em;
+    top: 6em;
     left: 2em;
     font-size: 1.2em;
     color: #fff;

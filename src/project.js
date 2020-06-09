@@ -1,25 +1,41 @@
-import { createProjectContent } from './DOM';
+import { projects, projectModal, populatePage } from './index';
 import { closeModal } from './modal';
-import { projectModal } from './index';
 
-export const newProject = (title, description) => ({ 
+export const newProject = (title) => ({ 
     title,
-    description,
     todos: [] 
 });
 
 
 export function createProject(e) {
-    const projectList = document.querySelector('#projects');
+    const projectTitle = document.querySelector('#projectTitle');
+    const currentProject = document.querySelector('#main h2');
+    const todoList = document.querySelector('#todos');
 
     // prevent page refresh on submit
     e.preventDefault();
 
     // create the project (using external function)
-    let project = createProjectContent();
+    let project = newProject(projectTitle.value);
+
+    for (let item of projects) {
+        if (item.title == project.title) return;
+    }
 
     // add project to the projects list
-    projectList.appendChild(project);
+    projects.push(project);
+
+    // Update local storage
+    localStorage.setItem('projects', JSON.stringify(projects))
+
+    // display new project
+    populatePage(projects);
+
+    // show new project as current
+    currentProject.textContent = project.title;
+
+    // reset the todos
+    todoList.innerHTML = "";
 
     // close the modal (on success)
     closeModal(projectModal);
