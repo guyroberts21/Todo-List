@@ -308,12 +308,12 @@ h2 {
 
 .todo-delete {
     font-size: 1.25em;
-    padding: 0.1em 0.3em;
+    padding: 0.1em 0.4em;
     border-radius: 4px;
     color: #fff;
     background-color: #E85A4F;
     position: absolute;
-    right: 0.89em;
+    right: 0.75em;
     top: 3.5em;
     cursor: pointer;
     transition: color 0.1s ease-in;

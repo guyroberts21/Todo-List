@@ -115,10 +115,11 @@ export function createTodoContent(todo) {
 export function populateTodos(project) {
     const todoList = document.querySelector('#todos');
     todoList.innerHTML = "";
-        for (let todo of project.todos) {
-            let todoItem = createTodoContent(todo);
-            todoList.appendChild(todoItem);
-        }
+    for (let i = 0; i < project.todos.length; i++) {
+        let todoItem = createTodoContent(project.todos[i]);
+        todoItem.dataset.index = i;
+        todoList.appendChild(todoItem);
+    }
 }
 
 export const todoTitle = document.getElementById('todoTitle');

@@ -2,13 +2,12 @@ import { todoTitle, todoDescription, todoDate, todoPriority, populateTodos } fro
 import { closeModal } from './modal';
 import { projects, todoModal } from './index';
 import { format } from 'date-fns';
+import { findProject } from './project';
 
 // export single-line factory function for creating each todo list item
 export const newTodo = ( title, description, dueDate, priority, completed ) => ({ title, description, dueDate, priority, completed });
 
 export function createTodo(e) {
-    const currentProject = document.querySelector('#main h2').textContent;
-
     // prevent page refresh
     e.preventDefault();
 
@@ -23,16 +22,15 @@ export function createTodo(e) {
     let todo = newTodo(todoTitle.value, todoDescription.value, formattedDate, todoPriority.value, false);
 
     // add the todo to current project
-    for (let project of projects) {
-        if (project.title == currentProject) {
-            project.todos.push(todo);
-            populateTodos(project);
-        }
-    };
-
+    let currentProject = findProject(projects);
+    currentProject.todos.push(todo);
+    
     // Update local storage
     localStorage.setItem('projects', JSON.stringify(projects))
-
+    
+    // re-render the todo list
+    populateTodos(currentProject);
+    
     // close on success
     closeModal(todoModal);
 
