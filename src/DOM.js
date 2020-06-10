@@ -1,3 +1,5 @@
+import { openTodo, deleteTodo } from './todo-methods';
+
 export function createProjectContent(project) {
     const currentProject = document.querySelector('#main h2');
 
@@ -36,9 +38,31 @@ export function createProjectContent(project) {
 }
 
 export function createTodoContent(todo) {
-    // main container
+    // todo item
+    const main = document.createElement('div');
+    main.classList.add('todo-item');
+    main.addEventListener('click', openTodo);
+
+    // main content
     let todoContainer = document.createElement('div');
-    todoContainer.classList.add('todo-item');
+    todoContainer.classList.add('todo-main');
+
+    // secondary content
+    let todoSecondary = document.createElement('div');
+    todoSecondary.classList.add('todo-secondary');
+
+    // todo description
+    const todoInfoContainer = document.createElement('span');
+    todoInfoContainer.classList.add('todo-info');
+    todoInfoContainer.textContent = "- " + todo.description;
+    todoSecondary.appendChild(todoInfoContainer);
+
+    // todo delete
+    const todoDelete = document.createElement('span');
+    todoDelete.classList.add('todo-delete');
+    todoDelete.textContent = 'X';
+    todoDelete.addEventListener('click', deleteTodo);
+    todoSecondary.appendChild(todoDelete);
 
     // priority
     const priority = document.createElement('div');
@@ -80,8 +104,12 @@ export function createTodoContent(todo) {
     todoCompleteLabel.appendChild(todoCompleteCheckbox);
     todoContainer.appendChild(todoCompleteLabel);
 
+    // append to the main item
+    main.appendChild(todoContainer);
+    main.appendChild(todoSecondary);
+
     // return final element
-    return todoContainer;
+    return main;
 }
 
 export function populateTodos(project) {

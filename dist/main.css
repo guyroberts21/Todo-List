@@ -18,7 +18,12 @@ body {
     background-color: #EAE7DC;
     color: #E98074;
     font-size: 20px;
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Center text */
+h2 {
+    text-align: center;
 }
 
 /* Page wrapper to create the page structure */
@@ -26,7 +31,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 5fr;
     height: 100vh;
-    text-align: center;
 }
 
 #main {
@@ -43,20 +47,13 @@ body {
 }
 
 #sidebar {
+    text-align: center;
     position: relative;
     border-right: 2px solid #D8C3A5;
 }
 
 #sidebar h2 {
     border-bottom: 2px solid #D8C3A5;
-}
-
-/* Project info */
-#projectInfo {
-    text-align: left;
-    font-size: 0.8em;
-    font-style: italic;
-    color: #8E8D8A;
 }
 
 /* Style add project button */
@@ -276,19 +273,58 @@ body {
 }
 
 .todo-completed .todo-title,
-.todo-completed .todo-date {
+.todo-completed .todo-date,
+.todo-completed .todo-info {
     text-decoration: line-through;
     opacity: 0.75;
 }
 
 .todo-item {
+    position: relative;
+    border: 1px solid #D8C3A5;
+    border-radius: 5px;
     width: 80%;
     margin: 1.5em auto;
     padding: 1em;
+}
+
+.todo-main {    
     display: flex; 
     justify-content: space-between;
-    border: 1px solid #D8C3A5;
-    border-radius: 5px;
+}
+
+/* Only show the secondary content with this class */
+.todo-secondary {
+    display: none;
+    font-size: 0.8em;
+    color: #8E8D8A;
+}
+
+.todo-secondary .todo-info {
+    display: inline-block;
+    padding: 1.5em 0.5em 0.5em 0;
+    text-align: left;
+}
+
+.todo-delete {
+    font-size: 1.25em;
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #E85A4F;
+    position: absolute;
+    right: 0.89em;
+    top: 3.5em;
+    cursor: pointer;
+    transition: color 0.1s ease-in;
+}
+
+.todo-delete:hover {
+    color: #000;
+}
+
+.todo-item-open .todo-secondary {
+    display: block;
 }
 
 .todo-priority-mini {
