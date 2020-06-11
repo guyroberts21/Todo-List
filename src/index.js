@@ -1,13 +1,23 @@
 import { newTodo, createTodo} from './todo';
 import { newProject, createProject } from './project';
+import { editProject } from './project-methods';
 import { openModal, closeModal, clickOutside } from './modal';
 import { createProjectContent, populateTodos } from './DOM';
 import { format } from 'date-fns';
 
 // trial
 import { toggleComplete } from './todo-methods';
-const todos = document.querySelector('#todos');
+export const todos = document.querySelector('#todos');
 todos.addEventListener('click', toggleComplete);
+
+// global projects variable
+export let projects = JSON.parse(localStorage.getItem('projects'));
+
+// Local Storage - either retrieve the projects from local storage or create an initial project for user
+if (!projects) {
+    projects = [initialProject()];
+    localStorage.setItem('projects', JSON.stringify(projects));
+}
 
 // Project Modal buttons
 export const projectModal = document.getElementById('projectModal');
@@ -29,6 +39,11 @@ const todoClose = document.querySelector('.todo-close-btn');
 addTodoBtn.addEventListener('click', () => {
     // reset the date to the current date value
     document.getElementById('todoDate').value = new Date().toDateInputValue();
+
+    // check if no project available
+    if (projects.length == 0) {
+        return;
+    }
     
     openModal(todoModal);
 });
@@ -39,6 +54,10 @@ window.addEventListener('click', e => clickOutside(e, todoModal));
 
 // Add event listener to create project
 document.projectForm.addEventListener('submit', createProject);
+
+// Add event listener to edit project title
+document.editProjectForm.addEventListener('submit', editProject);
+export const editProjectModal = document.getElementById('editProjectModal');
 
 // Add event listener to create todo
 document.todoForm.addEventListener('submit', createTodo);
@@ -62,20 +81,24 @@ function formatDate(date) {
 }
 
 // Create an initial project which will appear when user first enter site
-let firstProject = newProject('Project 1');
-let firstTodo = newTodo('Be productive', '"The way to get started is to quit talking and begin doing."', formatDate(new Date().toDateInputValue()), 'Medium', false);
-firstProject.todos.push(firstTodo);
-
-// Local Storage - either retrieve the projects from local storage or create an initial project for user
-export let projects = JSON.parse(localStorage.getItem('projects')) || [firstProject];
+function initialProject() {
+    let firstProject = newProject('Project 1');
+    let firstTodo = newTodo('Be productive', '"The way to get started is to quit talking and begin doing."', formatDate(new Date().toDateInputValue()), 'Medium', false);
+    firstProject.todos.push(firstTodo);
+    return firstProject;
+}
 
 export function populatePage(projects) {
     const projectList = document.querySelector('#projects');
     const currentProject = document.querySelector('#main h2');
 
     // display first project as current
-    currentProject.textContent = projects[0].title;
-    populateTodos(projects[0]);
+    if (projects[0]) {
+        currentProject.textContent = projects[0].title;
+        populateTodos(projects[0]);
+    } else {
+        currentProject.textContent = 'There are no projects active';
+    }
 
     projectList.innerHTML = "";
     for (let project of projects) {
@@ -86,3 +109,17 @@ export function populatePage(projects) {
 
 // Display projects on page load
 populatePage(projects);
+
+function toggleConfig(e) {
+    const config = e.target.childNodes[0];
+    if (e.target.className == 'configure') {
+        if (config.style.display == 'block') {
+            config.style.display = 'none';
+        } else {
+            config.style.display = 'block';
+        }
+    }
+}
+
+// tmp code
+window.addEventListener('click', toggleConfig);

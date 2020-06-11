@@ -1,10 +1,13 @@
+import { editProjectModal } from './index';
 import { openTodo, deleteTodo } from './todo-methods';
+import { deleteProject } from './project-methods';
+import { openModal, clickOutside } from './modal';
 
 export function createProjectContent(project) {
     const currentProject = document.querySelector('#main h2');
 
     // Create the project container
-    let projectItem = document.createElement('ul');
+    const projectItem = document.createElement('ul');
     projectItem.classList.add('project');
 
     projectItem.addEventListener('click', () => {
@@ -13,10 +16,32 @@ export function createProjectContent(project) {
     }); 
 
     // config button
-    let configBtn = document.createElement('button');
+    const configBtn = document.createElement('button');
+    const configContent = document.createElement('ul');
+    configContent.classList.add('configure-display');
     configBtn.classList.add('configure');
-    configBtn.textContent = '...';
     projectItem.appendChild(configBtn);
+
+    // config edit
+    const configEdit = document.createElement('li');
+    configEdit.classList.add('configure-edit');
+    configEdit.textContent = 'Edit'
+    configEdit.addEventListener('click', () => openModal(editProjectModal));
+
+    // close if clicked outside
+    window.addEventListener('click', e => clickOutside(e, editProjectModal));
+
+    // append to the container
+    configContent.appendChild(configEdit);
+
+    // config delete
+    const configDelete = document.createElement('li');
+    configDelete.textContent = 'Delete';
+    configDelete.addEventListener('click', deleteProject);
+    configContent.appendChild(configDelete);
+
+    // append the config to the button
+    configBtn.appendChild(configContent);
 
     // make title
     const projectName = document.createElement('span');
@@ -115,6 +140,7 @@ export function createTodoContent(todo) {
 export function populateTodos(project) {
     const todoList = document.querySelector('#todos');
     todoList.innerHTML = "";
+    if (!project) return;
     for (let i = 0; i < project.todos.length; i++) {
         let todoItem = createTodoContent(project.todos[i]);
         todoItem.dataset.index = i;

@@ -6,7 +6,6 @@ export const newProject = (title) => ({
     todos: [] 
 });
 
-
 export function createProject(e) {
     const projectTitle = document.querySelector('#projectTitle');
     const currentProject = document.querySelector('#main h2');
@@ -42,16 +41,4 @@ export function createProject(e) {
     
     // Reset the title and desc. fields
     this.reset();
-}
-
-// find the 
-export function findProject(projects) {
-    const currentProject = document.querySelector('#main h2').textContent;
-
-    for (let i = 0; i < projects.length; i++) {
-        if (projects[i].title == currentProject) {
-            return projects[i];
-        }
-    };
-    throw new Error('Project doesn\'t exist');
 }

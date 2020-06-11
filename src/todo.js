@@ -2,7 +2,7 @@ import { todoTitle, todoDescription, todoDate, todoPriority, populateTodos } fro
 import { closeModal } from './modal';
 import { projects, todoModal } from './index';
 import { format } from 'date-fns';
-import { findProject } from './project';
+import { findProject } from './project-methods';
 
 // export single-line factory function for creating each todo list item
 export const newTodo = ( title, description, dueDate, priority, completed ) => ({ title, description, dueDate, priority, completed });

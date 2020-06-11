@@ -1,5 +1,5 @@
 import { projects } from './index';
-import { findProject } from './project';
+import { findProject } from './project-methods';
 import { populateTodos } from './DOM';
 
 export function toggleComplete(e) {
