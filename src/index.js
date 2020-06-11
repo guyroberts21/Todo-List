@@ -10,6 +10,24 @@ import { toggleComplete } from './todo-methods';
 export const todos = document.querySelector('#todos');
 todos.addEventListener('click', toggleComplete);
 
+// Make the date input display today's date as default
+Date.prototype.toDateInputValue = (function() {
+    let local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
+// Function to format date properly
+function formatDate(date) {
+    date = date.split('-');
+    let day = parseInt(date[2]);
+    let month = parseInt(date[1]) - 1;
+    let year = parseInt(date[0]);
+
+    // return the formatted date using date-fns
+    return format(new Date(year, month, day), 'do MMM');
+}
+
 // global projects variable
 export let projects = JSON.parse(localStorage.getItem('projects'));
 
@@ -62,23 +80,7 @@ export const editProjectModal = document.getElementById('editProjectModal');
 // Add event listener to create todo
 document.todoForm.addEventListener('submit', createTodo);
 
-// Make the date input display today's date as default
-Date.prototype.toDateInputValue = (function() {
-    let local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-});
 
-// Function to format date properly
-function formatDate(date) {
-    date = date.split('-');
-    let day = parseInt(date[2]);
-    let month = parseInt(date[1]) - 1;
-    let year = parseInt(date[0]);
-
-    // return the formatted date using date-fns
-    return format(new Date(year, month, day), 'do MMM');
-}
 
 // Create an initial project which will appear when user first enter site
 function initialProject() {
