@@ -233,7 +233,7 @@ h2 {
     position: relative;
     cursor: pointer;
     list-style-type: none;
-    margin-top: 0.5em;
+    margin-top: 2.5em;
     padding: 10px;
 }
 
@@ -242,15 +242,47 @@ h2 {
 }
 
 /* Config button */
-.configure {
-    color: #8E8D8A;
-    transform: rotate(90deg);
-    font-size: 0.75em;
-    font-weight: 900;
+button.configure {
     border: none;
     background: transparent;
     cursor: pointer;
     margin-left: 1em;
+}
+
+button.configure::after {
+    content: "\2807";
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #8E8D8A;
+}
+
+.configure .configure-display {
+    display: none;
+    position: absolute;
+    left: 2em;
+    top: 2em;
+    font-size: 1.35em;
+    color: #EAE7DC;
+    border: 1px dashed #8E8D8A;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+}
+
+.configure-display li {
+    list-style-type: none;
+    border: 1px solid #E98074;
+    background-color: #E98074;
+    padding: 0.2em 1em;
+}
+
+.configure-display li:hover {
+    background-color: #E85A4F;
+    color: #8E8D8A;
+}
+
+.configure-display .configure-edit {
+    border-bottom: 1px dashed #8E8D8A;
 }
 
 /* Dropdown */
